@@ -32,3 +32,18 @@ import java.util.*;
       
      }
     }
+
+
+
+GFG can also be find as 
+
+    int dvd = num1;
+    int dsr = num2;
+    int rem = 0;
+    while (dvd % dsr != 0) {
+      rem = dvd % dsr;
+      dvd = dsr;
+      dsr = rem;
+
+    }
+    System.out.println(dsr);
