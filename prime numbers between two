@@ -1,0 +1,25 @@
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) {
+    // write your code here
+    Scanner scn = new Scanner(System.in);
+    int low = scn.nextInt();
+    int high = scn.nextInt();
+    for (int x = low; x <= high; x++) {
+        int num=x;
+        int fac=0;
+             for(int i=2; i*i<=num; i++){
+           if(num%i==0){
+            fac=fac+1;
+            break;
+           }
+       }
+       if(fac==0){
+           System.out.println(num);
+       }
+       }  
+       }
+       
+        
+      }
