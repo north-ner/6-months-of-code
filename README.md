@@ -10,3 +10,9 @@ roses are red
 violets are blue 
 this isnt a poem
 why are you reading it in a rhyme. 
+
+
+KEY
+
+1. gs-xxx  getting started
+2. pt-xxx  pattern
