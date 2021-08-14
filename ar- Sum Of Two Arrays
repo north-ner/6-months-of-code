@@ -1,0 +1,76 @@
+1. You are given a number n1, representing the size of array a1.
+2. You are given n1 numbers, representing elements of array a1.
+3. You are given a number n2, representing the size of array a2.
+4. You are given n2 numbers, representing elements of array a2.
+5. The two arrays represent digits of two numbers.
+6. You are required to add the numbers represented by two arrays and print the
+arrays.
+
+
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+  public static void main(String[] args) throws Exception {
+    // write your code here
+    Scanner scn = new Scanner(System.in);
+    int n1 = scn.nextInt();
+    int [] arr1;
+    int [] arr2;
+
+    int new_arr = 0;
+    arr1 = new int[n1];
+
+
+    for (int i = 0; i < n1; i++) {
+      arr1[i] = scn.nextInt();
+    }
+
+    int n2 = scn.nextInt();
+    arr2 = new int[n2];
+
+
+    for (int i = 0; i < n2; i++) {
+      arr2[i] = scn.nextInt();
+    }
+
+
+    // if (n1 > n2) {
+    //   new_arr = n1;
+
+    // } else {
+    //   new_arr = n2 + 1;
+    // }
+    int n3 = Math.max(n1, n2) + 1;
+
+    int carry = 0;
+    int i1 = n1 - 1, i2 = n2 - 1, i3 = n3 - 1;
+    int [] arr3 = new int[n3];
+    while (i3 >= 0) {
+
+      int dig1 = (i1 >= 0) ? arr1[i1] : 0;
+      int dig2 = (i2 >= 0) ? arr2[i2] : 0;
+      int sum = dig1 + dig2 + carry;
+      int q = sum / 10;
+      int r = sum % 10;
+      arr3[i3] = r;
+      carry = q;
+      i1--;
+      i2--;
+      i3--;
+    }
+
+
+    for (int i = 0; i < arr3.length; i++) {
+      if (i == 0 && arr3[i] == 0) {
+        continue;
+      } else {
+        System.out.println(arr3[i]);
+      }
+
+    }
+
+  }
+
+}
