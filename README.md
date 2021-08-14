@@ -18,3 +18,4 @@ KEY
 2. pt-xxx  pattern
 3. ns-XXX  number system
 4. fn-XXX  function
+5. ar-xxx  array
