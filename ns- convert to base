@@ -22,6 +22,8 @@ import java.util.*;
        while(n!=0){
           int r=n%b;
           n=n/b;
+          
+               //these two line of code is to increase the position of dizits. first dizit will go in ones , then second on 10s place then thiords on 100s place
           res+=r*powe;
           
           powe*=10;;
