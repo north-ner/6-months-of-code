@@ -62,7 +62,7 @@ public class Main {
 
     }
     //report exit point
-    if(direction==0){
+       if(direction==0){
     System.out.println(row);
     System.out.println(col-1);
 }
@@ -73,11 +73,11 @@ else if(direction==1){
 }
 else if(direction==2){
     System.out.println(row+1);
-    System.out.println(col-1);
+    System.out.println(col);
     
 }
 else{
-    System.out.println(row-1);
+    System.out.println(row);
     System.out.println(col+1);
 }
   }
