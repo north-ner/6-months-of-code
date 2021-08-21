@@ -10,57 +10,57 @@ import java.util.*;
 
 public class Main {
 
-    public static void main(String[] args) throws Exception {
-        // write your code here
-                            Scanner scn=new Scanner(System.in);
-        int n=scn.nextInt();
-    int [][]arr=new int[n][n];
-    
-    for(int i=0;i<n;i++){
-        for(int j=0;j<n;j++){
-            arr[i][j]=scn.nextInt();
-            
-        }
-        }
-        boolean issaddlepointachieved=false;
-        for(int i=0;i<n;i++){
-            
-            //minimum of row i
-            int val=Integer.MAX_VALUE;
-            int col=0;
-            for(int j=0;j<n;j++){
-                if(arr[i][j]<val){
-              
-                val=arr[i][j];
-                  col=j;
-                    
-                }
-            }
-            //check if the minimum we found is max in column
-             int Max=Integer.MIN_VALUE;
-             int row=0;
-            for(int k=0;k<n;k++){
-                if(arr[k][col]>Max){
-                    Max=arr[k][col];
-                    row=k;
-                }
-                
-                
-            }
-            //
-            if(row==i){
-                
-                System.out.println(val);
-                issaddlepointachieved=true;
-                break;
-            }
-            
-        }
-        if(issaddlepointachieved==false){
-            System.out.println("Invalid input");
-            
-        }
-        
+  public static void main(String[] args) throws Exception {
+    // write your code here
+    Scanner scn = new Scanner(System.in);
+    int n = scn.nextInt();
+    int [][]arr = new int[n][n];
+
+    for (int i = 0; i < n; i++) {
+      for (int j = 0; j < n; j++) {
+        arr[i][j] = scn.nextInt();
+
+      }
     }
+    boolean issaddlepointachieved = false;
+    for (int i = 0; i < n; i++) {
+
+      //minimum of row i
+      int val = Integer.MAX_VALUE;
+      int col = 0;
+      for (int j = 0; j < n; j++) {
+        if (arr[i][j] < val) {
+
+          val = arr[i][j];
+          col = j;
+
+        }
+      }
+      //check if the minimum we found is max in column
+      int Max = Integer.MIN_VALUE;
+      int row = 0;
+      for (int k = 0; k < n; k++) {
+        if (arr[k][col] > Max) {
+          Max = arr[k][col];
+          row = k;
+        }
+
+
+      }
+      //checking if the max element of the column is on the same row
+      if (row == i) {
+
+        System.out.println(val);
+        issaddlepointachieved = true;
+        break;
+      }
+
+    }
+    if (issaddlepointachieved == false) {
+      System.out.println("Invalid input");
+
+    }
+
+  }
 
 }
