@@ -1,0 +1,39 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+  public static void main(String[] args) throws Exception {
+    // write your code here
+    Scanner scn = new Scanner(System.in);
+    int n = scn.nextInt();
+    int[]arr = new int[n];
+    for (int i = 0; i < n; i++) {
+      arr[i] = scn.nextInt();
+    }
+
+    int ans = maxOfArray(arr, 0);
+    System.out.println(ans);
+  }
+
+  public static int maxOfArray(int[] arr, int idx) {
+    int ans1 = 0;
+    if (idx < arr.length)
+    {
+
+      //1. max of remaining array excluing element k1
+      int k1 = maxOfArray(arr, idx + 1);
+
+      //2.max of k1 and arr[idx]
+      int max = Math.max(k1, arr[idx]);
+      ans1 = max;
+
+    }
+    return ans1;
+
+
+
+
+  }
+
+}
