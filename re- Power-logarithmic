@@ -1,0 +1,46 @@
+1. You are given a number x.
+2. You are given another number n.
+3. You are required to calculate x raised to the power n. Don't change the signature of power function.
+
+Note1 -> The previous version expects the call stack to be of n height. This function expects call function to be only log(n) high.
+
+Note2 -> The online judge can't force you to write the function recursively but that is what the spirit of question is. Write recursive and not iterative logic. The purpose of the question is to aid learning recursion and not test you.
+
+
+
+
+
+
+
+import java.io.*;
+import java.util.*;
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+        // write your code here
+            Scanner scn = new Scanner(System.in);
+    int x = scn.nextInt();
+    int n = scn.nextInt();
+    int an = power(x, n);
+    System.out.println(an);
+    }
+
+    public static int power(int x, int n){
+         int ans = 1;
+         int mod=n%2;
+        int pow=n/2;    
+        if (n > 0) {
+        
+        
+      int xpnb2 = power(x, pow);
+      int xpn=xpnb2*xpnb2;
+      if(n%2==1)
+          xpn = xpn * x;
+          
+      ans=xpn;
+
+    }
+    return ans;
+    }
+
+}
