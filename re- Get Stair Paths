@@ -1,0 +1,71 @@
+1. You are given a number n representing number of stairs in a staircase.
+2. You are standing at the bottom of staircase. You are allowed to climb 1 step, 2 steps or 3 steps in one move.
+3. Complete the body of getStairPaths function - without changing signature - to get the list of all paths that can be used to climb the staircase up.
+Use sample input and output to take idea about output.
+
+Note -> The online judge can't force you to write the function recursively but that is what the spirit of question is. Write recursive and not iterative logic. The purpose of the question is to aid learning recursion and not test you.
+
+
+I/P: 3
+O/P:[111, 12, 21, 3]
+
+
+
+
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+        Scanner scn=new Scanner(System.in);
+        int n= scn.nextInt();
+        ArrayList<String> res=getStairPaths(n);
+        System.out.println(res);    
+        
+
+    }
+
+    public static ArrayList<String> getStairPaths(int n) {
+        //base codiiton
+        if(n<0){
+            //negative base case : npo path possible
+            ArrayList<String> path=new ArrayList<>();
+            return path;
+            
+            
+        }else if(n==0){
+            //positive base case : one path possible 
+            ArrayList<String> path=new ArrayList<>();
+            path.add("");
+            return path;
+            
+        }
+        
+        //faith
+        ArrayList<String> futurePath1=getStairPaths(n-1);
+        ArrayList<String> futurePath2=getStairPaths(n-2);
+        ArrayList<String> futurePath3=getStairPaths(n-3);
+        
+        
+        //meeting expectations
+        
+        ArrayList<String> res=new ArrayList<>();
+        
+        // for(int i=0;i< futurePath1.size();i++){
+        //     res.add (1+futurePath1[i]);
+        //         }
+        // the below for loop does the same work as the above one 
+        for(String s1:futurePath1)
+            res.add(1+s1);
+            
+             for(String s2:futurePath2)
+            res.add(2+s2);
+            
+             for(String s3:futurePath3)
+            res.add(3+s3);
+   
+        return res;
+    }   
+
+}
