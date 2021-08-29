@@ -19,3 +19,4 @@ KEY
 3. ns-XXX  number system
 4. fn-XXX  function
 5. ar-xxx  array
+6. re-xxx  Recursion
