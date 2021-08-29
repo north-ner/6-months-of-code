@@ -34,19 +34,18 @@ public class Main {
         
         }
         
-        //faith
-        ArrayList <String> smRe = gss(str.substring(1));
+        String temp=str.substring(1);
         
+//forming faith  for the "bc"
+        ArrayList <String> smRe = gss(temp);
         
+//Form result , meeting expectations
         ArrayList <String> res =new ArrayList<>();
-        
-        //for each loop
+         //for each loop
         //Append empty string
         for(String s:smRe){
             res.add(""+s);
-            
-            
-        }
+            }
         //append "a" ie the first character of 
         for(String s:smRe){
             res.add(str.charAt(0)+s);
