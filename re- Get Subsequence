@@ -1,0 +1,59 @@
+1. You are given a string str.
+2. Complete the body of getSS function - without changing signature - to calculate all subsequences of str.
+Use sample input and output to take idea about subsequences.
+
+Note -> The online judge can't force you to write the function recursively but that is what the spirit of question is.
+Write recursive and not iterative logic. The purpose of the question is to aid learning recursion and not test you.
+
+ip- abc
+op [, c, b, bc, a, ac, ab, abc]
+
+
+
+
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+        Scanner scn=new Scanner(System.in);
+        String str= scn.nextLine();
+        ArrayList<String> res=gss(str);
+        //we can print like this cause arraylist has a toString method converting arraylist to string
+        System.out.println(res);
+
+    }
+
+    public static ArrayList<String> gss(String str) {
+        //Base Case 
+        if(str.length()==0){
+        ArrayList <String> res =new ArrayList<>();
+        res.add("");
+        return res;
+        
+        }
+        
+        //faith
+        ArrayList <String> smRe = gss(str.substring(1));
+        
+        
+        ArrayList <String> res =new ArrayList<>();
+        
+        //for each loop
+        //Append empty string
+        for(String s:smRe){
+            res.add(""+s);
+            
+            
+        }
+        //append "a" ie the first character of 
+        for(String s:smRe){
+            res.add(str.charAt(0)+s);
+            
+        }
+        return res;
+        
+    }
+
+}
