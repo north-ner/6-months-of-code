@@ -1,0 +1,64 @@
+1. You are given a string str of digits. (will never start with a 0)
+2. You are required to encode the str as per following rules
+    1 -> a
+    2 -> b
+    3 -> c
+    ..
+    25 -> y
+    26 -> z
+3. Complete the body of printEncodings function - without changing signature - to calculate and print all encodings of str.
+Use the input-output below to get more understanding on what is required
+123 -> abc, aw, lc
+993 -> iic
+013 -> Invalid input. A string starting with 0 will not be passed.
+103 -> jc
+303 -> No output possible. But such a string maybe passed. In this case print nothing.
+
+Note -> The online judge can't force you to write the function recursively but that is what the spirit of question is. Write recursive and not iterative logic. The purpose of the question is to aid learning recursion and not test you.
+
+IP: 655196
+OP: feeaif
+feesf
+
+
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+  public static void main(String[] args) throws Exception {
+    Scanner scn = new Scanner(System.in);
+    String input = scn.nextLine();
+    String output = "";
+    printEncodings(input, output);
+
+
+  }
+
+  public static void printEncodings(String input, String output) {
+    if (input.length() == 0) {
+      System.out.println(output);
+      return;
+    }
+    //extract one character from input
+    char ch1 = input.charAt(0);
+    if (ch1 >= '1' && ch1 <= '9') {
+      //ch1-'0' to convert the string to the int
+      //(char) is typecasting the integer to the relative ascii value
+      //hence here we are adding 96 to the o/p and we converting the numerical to char to ger the alphabt
+      printEncodings(input.substring(1), output + (char)(ch1 - '0' + 96));
+    }
+
+    if (input.length() > 1) {
+      //extact two char from input
+      String ch12 = input.substring(0, 2);
+      int ch12int = Integer.parseInt(ch12);
+      //cause we only have to take 10,11,12 not the 01 , 02  in two digit case
+      //condition for ch12 to lie between 10-26
+      if (ch12int >= 10 && ch12int <= 26) {
+        printEncodings(input.substring(2), output + (char)(ch12int + 96));
+      }
+    }
+  }
+
+}
