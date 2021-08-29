@@ -1,0 +1,40 @@
+1. You are given a string str.
+2. Complete the body of printSS function - without changing signature - to calculate and print all subsequences of str.
+Use sample input and output to take idea about subsequences.
+
+Note -> The online judge can't force you to write the function recursively but that is what the spirit of question is. Write recursive and not iterative logic. The purpose of the question is to aid learning recursion and not test you.
+
+
+
+
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+        Scanner scn=new Scanner(System.in);
+        String input=scn.nextLine();
+        String output="";
+        printSS(input,output);
+
+    }
+
+    public static void printSS(String input, String output) {
+        
+        if(input.length()==0){
+            System.out.println(output);
+            return;
+        }
+        //first char
+        char ch=input.charAt(0);
+        //1.character [resent in sub sequence]
+        printSS(input.substring(1),output+ch);
+        
+        
+        //2.character not present in sub sequence
+            printSS(input.substring(1),output);
+        
+    }
+
+}
