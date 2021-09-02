@@ -20,3 +20,4 @@ KEY
 4. fn-XXX  function
 5. ar-xxx  array
 6. re-xxx  Recursion
+7. bt-xxx  Backtracking
