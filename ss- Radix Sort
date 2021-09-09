@@ -1,0 +1,84 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+  public static void radixSort(int[] arr) {
+    // write code here   
+    int max=Integer.MIN_VALUE;
+    for(int i=0;i<arr.length;i++){
+    if(max<arr[i]){
+        max=arr[i];
+    }}
+    
+    int count=0;
+    while(max>0){
+        count++;
+        max=max/10;
+    }
+    int maxExp=(int)Math.pow(10,count);
+    for(int exp=10;exp<=maxExp;exp*=10){
+        countSort(arr,exp);
+        
+    }
+    
+    
+  }
+
+  public static void countSort(int[] arr, int exp) {
+    // write code here
+     //creating frequency array
+   int []freq=new int[10];
+   for(int i=0;i<arr.length;i++){
+       int idx=arr[i]%exp/(exp/10);
+       freq[idx]++;
+       
+   }
+   
+   //prefix array which is the sum of all the other frequency array
+   // ex prefixSum[3]=freq[0]+freq[1]+freq[2]+freq[3]
+   //or  prefixSum[3]= prefixSum[2]+freq[3]
+   int[] prefixSum=new int[10];
+   for(int i=0;i<freq.length;i++){
+       if(i==0)prefixSum[i]=freq[i];
+       else prefixSum[i]=(freq[i]+prefixSum[i-1]);
+   }
+   
+   //running the loop for inout array in reverse and checking the each element 
+   // now the element-min= idx of the dizit in the freq array
+   // insert the element of arr in the valuse stored in prefixSum array
+   // also make decrememnt in the value of prefixsum array
+   int [] res=new int[arr.length];
+   for(int i=arr.length-1; i>=0;i--){
+       int idx=arr[i]%exp/(exp/10);
+        res[prefixSum[idx]-1]=arr[i];
+        prefixSum[idx]--;
+        
+       
+   }
+   for(int i=0;i<arr.length;i++){
+       arr[i]=res[i];
+   }
+    System.out.print("After sorting on " + (exp/10) + " place -> ");
+    print(arr);
+  }
+
+  public static void print(int[] arr) {
+    for (int i = 0; i < arr.length; i++) {
+      System.out.print(arr[i] + " ");
+    }
+    System.out.println();
+  }
+
+  public static void main(String[] args) throws Exception {
+    Scanner scn = new Scanner(System.in);
+    int n = scn.nextInt();
+    int[] arr = new int[n];
+    for (int i = 0; i < n; i++) {
+      arr[i] = scn.nextInt();
+    }
+    radixSort(arr);
+    print(arr);
+  }
+
+}
