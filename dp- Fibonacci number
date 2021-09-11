@@ -1,0 +1,55 @@
+import java.io.*;
+import java.util.*;
+
+public class Main{
+
+public static void main(String[] args) throws Exception {
+    Scanner scn=new Scanner(System.in);
+    int n=scn.nextInt();
+    System.out.println(fibNo(n));
+    //array for memoriation
+    //automatically pre fill the array
+    int[] dp=new int[n+1];
+    Arrays.fill(dp,-1);
+    System.out.println(fibMem(n,dp));
+    
+    // write your code here
+ }
+
+
+//using recursion.........................................................................
+public static int fibNo(int n){
+    int ans=0;
+    if(n==0||n==1){
+        return n; 
+    }
+
+    int fib1=fibNo(n-1);
+    int fib2=fibNo(n-2);
+            ans= fib1+fib2;
+    
+    return ans; 
+}
+
+
+//using backtracking by memoriation .................................................................................
+//taking an array and keeping track of all the branches we already parese so we dont have to go agagin
+public static int fibMem(int n,int[]dp){
+    
+     int ans=0;
+    if(n==0||n==1){
+        return n;
+    }
+        if(dp[n]!=-1){
+        return dp[n];
+    }
+    int fib1=fibMem(n-1,dp);
+    int fib2=fibMem(n-2,dp);
+    ans= fib1+fib2;
+     dp[n]=fib1+fib2;
+    return ans; 
+    
+    
+}
+
+}
