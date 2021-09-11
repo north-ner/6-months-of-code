@@ -1,0 +1,85 @@
+1. You are given a number n, representing the number of stairs in a staircase.
+2. You are on the 0th step and are required to climb to the top.
+3. You are given n numbers, where ith element's value represents - till how far from the step you 
+     could jump to in a single move.  
+     You can of course jump fewer number of steps in the move.
+4. You are required to print the number of different paths via which you can climb to the top.
+
+
+
+
+
+
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+        // write your code here
+        Scanner scn=new Scanner(System.in);
+        int n=scn.nextInt();
+        int[] arr=new int[n];
+        for(int i=0;i<n;i++){
+            arr[i]=scn.nextInt();
+
+        }
+                System.out.println(csvm(0,n,arr));
+                
+                int[]dp=new int[n+1];
+                Arrays.fill(dp,-1);
+                System.out.println(csvMem(0,n,arr,dp));
+        
+    }
+    //using recursion ...................................................................................
+        public static int csvm(int src,int dest,int[] arr){
+            
+            if(src>dest)return 0;
+            if(src==dest)return 1;
+            int totalPath=0;
+            for(int jump=1;jump<=arr[src];jump++){
+                
+                int xi=csvm(src+jump,dest,arr);
+                totalPath+=xi;
+            }
+            return totalPath;
+        }
+        // using memoization..............................................................................
+                public static int csvMem(int src,int dest,int [] arr,int [] dp){
+            if(src>dest)return 0;
+            if(src==dest)return 1;
+            if (dp[src]!=-1){
+                return dp[src];
+            }
+            int totalPath=0;
+            for(int jump=1;jump<=arr[src];jump++){
+                
+                int xi=csvMem(src+jump,dest,arr,dp);
+                totalPath+=xi;
+            }
+            dp[src]=totalPath;
+            return totalPath;
+            
+        }
+        //using tabulation ....................
+        
+                public static int csvTab(int src,int dest,int[]arr){
+            int n=arr.length;
+        int [] dp=new int[n+1];   
+        dp[dest]=1;
+        for(int i=n-1;i>=0;i--){
+            int totalPath=0;
+            for(int jump=1;jump<=arr[i];jump++){
+                if(i+jump<=dp.length){
+                    totalPath+=dp[i+jump];
+                }
+                
+                
+                
+            }
+            dp[i]=totalPath;
+        }
+        return dp[0];
+            
+        }
+}
