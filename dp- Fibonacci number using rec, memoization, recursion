@@ -14,10 +14,9 @@ public static void main(String[] args) throws Exception {
     System.out.println(fibMem(n,dp));
     
     // write your code here
+    System.out.println(fibTab(n));
  }
 
-
-//using recursion.........................................................................
 public static int fibNo(int n){
     int ans=0;
     if(n==0||n==1){
@@ -32,7 +31,7 @@ public static int fibNo(int n){
 }
 
 
-//using backtracking by memoriation .................................................................................
+//using backtracking by memoization 
 //taking an array and keeping track of all the branches we already parese so we dont have to go agagin
 public static int fibMem(int n,int[]dp){
     
@@ -49,6 +48,19 @@ public static int fibMem(int n,int[]dp){
      dp[n]=fib1+fib2;
     return ans; 
     
+    
+}
+
+//backtracking using tabulation/ iterative ............................
+public static int fibTab(int n){
+    int[]dp=new int[n+1];
+    dp[0]=0;
+    dp[1]=1;
+    for(int i=2;i<=n;i++){
+        dp[i]=dp[i-1]+dp[i-2];
+        
+    }
+    return dp[n];
     
 }
 
