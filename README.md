@@ -21,4 +21,5 @@ KEY
 5. ar-xxx  array
 6. re-xxx  Recursion
 7. bt-xxx  Backtracking
-8. ss-xxx SOrting and Searching
+8. ss-xxx Sorting and Searching
+9. dp-xxx  Dynamic programming
