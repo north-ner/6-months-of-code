@@ -21,6 +21,7 @@ public class Main {
 
     }
     System.out.println(re(arr, 0, 0, tar));
+     System.out.println(tab(arr),tar);
 
   }
   
@@ -71,6 +72,7 @@ public class Main {
 
     }
     System.out.println(re(arr, 0, 0, tar, dp));
+   
 
 
   }
@@ -107,5 +109,27 @@ public class Main {
     }
 
   }
+  
+  //using tabulation ..............................................
+  
+public class Solution {
+    public int solve(int[] arr, int tar) {
+        int n=arr.length;
+        boolean [][]dp=new boolean[n+1][tar+1];
+        for(int i=0;i<n;i++){
+            dp[i][0]=true;
+        }
+     for(int i=1;i<=n;i++){
+         for(int j=1;j<=tar;j++){
+                boolean no =dp[i-1][j];
+                boolean yes= (j-arr[i-1]<0)?false:dp[i-1][j-arr[i-1]];
 
+                dp[i][j]=no||yes;
+         }
+     }
+     return (dp[n][tar]==true)?1:0;
+    }
+}
+
+}
 }
