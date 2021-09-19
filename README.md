@@ -23,3 +23,4 @@ KEY
 7. bt-xxx  Backtracking
 8. ss-xxx Sorting and Searching
 9. dp-xxx  Dynamic programming
+10. sq- xxx Stack and Queue
