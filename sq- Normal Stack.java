@@ -99,6 +99,23 @@ public class Main {
       top++;
       data[top]=val;
     }
+    //if want to create stack with dynamic length
+    
+//        void push(int val) {
+//       if (tos == data.length - 1) {
+//           int [] temp=new int [data.length*2];
+//           for(int i=0;i<data.length;i++){
+//               temp[i]=data[i];
+//           }
+//           temp[data.length]=val;
+//           data=temp;
+//           tos++;
+          
+//       } else {
+//         tos++;
+//         data[tos] = val;
+//       }
+//     }
 
     int pop() {
       // write ur code here
